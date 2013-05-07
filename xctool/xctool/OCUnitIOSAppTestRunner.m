@@ -96,7 +96,7 @@ static void KillSimulatorJobs()
   [sessionConfig setApplicationToSimulateOnStart:appSpec];
   [sessionConfig setSimulatedSystemRoot:systemRoot];
   // Always run as iPhone (family = 1)
-  [sessionConfig setSimulatedDeviceFamily:@1];
+  [sessionConfig setSimulatedDeviceFamily:@2];
   [sessionConfig setSimulatedApplicationShouldWaitForDebugger:NO];
 
   [sessionConfig setSimulatedApplicationLaunchArgs:[self otestArguments]];
@@ -138,7 +138,7 @@ static void KillSimulatorJobs()
   [sessionConfig setApplicationToSimulateOnStart:appSpec];
   [sessionConfig setSimulatedSystemRoot:systemRoot];
   // Always run as iPhone (family = 1)
-  [sessionConfig setSimulatedDeviceFamily:@1];
+  [sessionConfig setSimulatedDeviceFamily:@2];
   [sessionConfig setSimulatedApplicationShouldWaitForDebugger:NO];
   [sessionConfig setLocalizedClientName:@"xctool"];
   [sessionConfig setSimulatedApplicationLaunchArgs:arguments];
