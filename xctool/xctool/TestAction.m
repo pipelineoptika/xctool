@@ -71,6 +71,12 @@
                      description:@"Parallelize test class execution within each target if > 0"
                        paramName:@"CHUNK_SIZE"
                            mapTo:@selector(setParallelizeChunkSize:)],
+	[Action actionOptionWithName:@"deviceType"
+						 aliases:nil
+					 description:
+	 @"Run the simulator as a particular iOS device: iPhone or iPad"
+					   paramName:@"DEVICETYPE"
+						 mapTo:@selector(setDeviceType:)],
     ];
 }
 
@@ -112,6 +118,11 @@
 - (void)setParallelizeChunkSize:(NSString *)chunkSize
 {
   [_runTestsAction setParallelizeChunkSize:chunkSize];
+}
+
+- (void)setDeviceType:(NSString *)deviceType
+{
+  [_runTestsAction setDeviceType:deviceType];
 }
 
 - (void)setSkipDependencies:(BOOL)skipDependencies

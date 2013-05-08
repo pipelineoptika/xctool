@@ -119,8 +119,24 @@ static void KillSimulatorJobs()
   DTiPhoneSimulatorSessionConfig *sessionConfig = [[[DTiPhoneSimulatorSessionConfig alloc] init] autorelease];
   [sessionConfig setApplicationToSimulateOnStart:appSpec];
   [sessionConfig setSimulatedSystemRoot:systemRoot];
-  // Always run as iPhone (family = 1)
-  [sessionConfig setSimulatedDeviceFamily:@1];
+  
+	if (_deviceType) {
+		if ([_deviceType isEqualToString:@"iPhone"]) {
+			[sessionConfig setSimulatedDeviceFamily:@1];
+		}
+		else if ([_deviceType isEqualToString:@"iPad"]) {
+			[sessionConfig setSimulatedDeviceFamily:@2];
+		}
+		else {
+			//default to 1 (iPhone) if no recognised option provided
+			[sessionConfig setSimulatedDeviceFamily:@1];
+		}
+	}
+	else {
+		//no argument provided, so use the default
+		[sessionConfig setSimulatedDeviceFamily:@1];
+	}
+	
   [sessionConfig setSimulatedApplicationShouldWaitForDebugger:NO];
 
   [sessionConfig setSimulatedApplicationLaunchArgs:[self otestArguments]];

@@ -26,6 +26,7 @@
   BOOL _garbageCollection;
   BOOL _freshSimulator;
   BOOL _freshInstall;
+  NSString *_deviceType;
   NSFileHandle *_standardOutput;
   NSFileHandle *_standardError;
   NSArray *_reporters;
@@ -39,6 +40,7 @@
           garbageCollection:(BOOL)garbageCollection
              freshSimulator:(BOOL)freshSimulator
                freshInstall:(BOOL)freshInstall
+				 deviceType:(NSString *)deviceType
              standardOutput:(NSFileHandle *)standardOutput
               standardError:(NSFileHandle *)standardError
                   reporters:(NSArray *)reporters;

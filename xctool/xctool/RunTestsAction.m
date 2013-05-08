@@ -141,6 +141,12 @@ static NSArray *chunkifyArray(NSArray *array, NSUInteger chunkSize) {
                      description:@"Parallelize test class execution within each target if > 0"
                        paramName:@"CHUNK_SIZE"
                            mapTo:@selector(setParallelizeChunkSize:)],
+	[Action actionOptionWithName:@"deviceType"
+						 aliases:nil
+					 description:
+	 @"Run the simulator as a particular iOS device: iPhone or iPad"
+					   paramName:@"DEVICETYPE"
+						   mapTo:@selector(setDeviceType:)],
     ];
 }
 
@@ -247,6 +253,7 @@ static NSArray *chunkifyArray(NSArray *array, NSUInteger chunkSize) {
   }
 
   if (![self runTestables:testables
+		deviceType:[self deviceType]
                   options:options
          xcodeSubjectInfo:xcodeSubjectInfo]) {
     return NO;
@@ -315,6 +322,7 @@ static NSArray *chunkifyArray(NSArray *array, NSUInteger chunkSize) {
                            symRoot:(NSString *)symRoot
                  sharedPrecompsDir:(NSString *)sharedPrecompsDir
                     xcodeArguments:(NSArray *)xcodeArguments
+			deviceType:(NSString *)deviceType
                        senTestList:(NSString *)senTestList
                 senTestInvertScope:(BOOL)senTestInvertScope
 {
@@ -425,6 +433,7 @@ static NSArray *chunkifyArray(NSArray *array, NSUInteger chunkSize) {
                                      garbageCollection:garbageCollectionEnabled
                                      freshSimulator:self.freshSimulator
                                      freshInstall:self.freshInstall
+					deviceType:deviceType
                                      standardOutput:nil
                                      standardError:nil
                                      reporters:reportersForConfiguration] autorelease];
@@ -534,6 +543,7 @@ static NSArray *chunkifyArray(NSArray *array, NSUInteger chunkSize) {
 }
 
 - (BOOL)runTestables:(NSArray *)testables
+		deviceType:(NSString *)deviceType
              options:(Options *)options
     xcodeSubjectInfo:(XcodeSubjectInfo *)xcodeSubjectInfo
 {
@@ -580,6 +590,7 @@ static NSArray *chunkifyArray(NSArray *array, NSUInteger chunkSize) {
                           symRoot:xcodeSubjectInfo.symRoot
                 sharedPrecompsDir:xcodeSubjectInfo.sharedPrecompsDir
                    xcodeArguments:xcodebuildArguments
+			deviceType:deviceType
                       senTestList:senTestList
                senTestInvertScope:senTestInvertScope];
 
