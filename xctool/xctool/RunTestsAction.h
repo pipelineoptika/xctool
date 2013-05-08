@@ -20,6 +20,7 @@
 
 @property (nonatomic, assign) BOOL freshSimulator;
 @property (nonatomic, assign) BOOL freshInstall;
+@property (nonatomic, retain) NSString *deviceType;
 @property (nonatomic, retain) NSString *testSDK;
 @property (nonatomic, retain) NSMutableArray *onlyList;
 

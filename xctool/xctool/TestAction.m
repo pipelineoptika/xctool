@@ -62,6 +62,12 @@
                      description:
      @"Use clean install of TEST_HOST for every app test run"
                          setFlag:@selector(setFreshInstall:)],
+	[Action actionOptionWithName:@"deviceType"
+						 aliases:nil
+					 description:
+	 @"Run the simulator as a particular iOS device: iPhone or iPad"
+					   paramName:@"DEVICETYPE"
+						 mapTo:@selector(setDeviceType:)],
     ];
 }
 
@@ -93,6 +99,11 @@
 - (void)setFreshInstall:(BOOL)freshInstall
 {
   [_runTestsAction setFreshInstall:freshInstall];
+}
+
+- (void)setDeviceType:(NSString *)deviceType
+{
+  [_runTestsAction setDeviceType:deviceType];
 }
 
 - (void)setSkipDependencies:(BOOL)skipDependencies

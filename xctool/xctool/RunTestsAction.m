@@ -57,6 +57,12 @@
                      description:
      @"Use clean install of TEST_HOST for every app test run"
                          setFlag:@selector(setFreshInstall:)],
+	[Action actionOptionWithName:@"deviceType"
+						 aliases:nil
+					 description:
+	 @"Run the simulator as a particular iOS device: iPhone or iPad"
+					   paramName:@"DEVICETYPE"
+						   mapTo:@selector(setDeviceType:)],
     ];
 }
 
@@ -166,6 +172,7 @@
                   testSDK:self.testSDK
            freshSimulator:[self freshSimulator]
              freshInstall:[self freshInstall]
+			   deviceType:[self deviceType]
                   options:options
          xcodeSubjectInfo:xcodeSubjectInfo]) {
     return NO;
@@ -183,6 +190,7 @@
             testSDK:(NSString *)testSDK
      freshSimulator:(BOOL)freshSimulator
        freshInstall:(BOOL)freshInstall
+		 deviceType:(NSString *)deviceType
         senTestList:(NSString *)senTestList
  senTestInvertScope:(BOOL)senTestInvertScope
 {
@@ -260,6 +268,7 @@
                                      garbageCollection:garbageCollectionEnabled
                                      freshSimulator:freshSimulator
                                      freshInstall:freshInstall
+									 deviceType:deviceType
                                      standardOutput:nil
                                      standardError:nil
                                      reporters:reporters] autorelease];
@@ -299,6 +308,7 @@
              testSDK:(NSString *)testSDK
       freshSimulator:(BOOL)freshSimulator
         freshInstall:(BOOL)freshInstall
+		  deviceType:(NSString *)deviceType
              options:(Options *)options
     xcodeSubjectInfo:(XcodeSubjectInfo *)xcodeSubjectInfo
 {
@@ -317,6 +327,7 @@
                    testSDK:testSDK
             freshSimulator:freshSimulator
               freshInstall:freshInstall
+				deviceType:deviceType
                senTestList:senTestList
         senTestInvertScope:senTestInvertScope]) {
       succeeded = NO;

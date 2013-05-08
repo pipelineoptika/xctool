@@ -28,6 +28,7 @@
           garbageCollection:(BOOL)garbageCollection
              freshSimulator:(BOOL)freshSimulator
                freshInstall:(BOOL)freshInstall
+				 deviceType:(NSString *)deviceType
              standardOutput:(NSFileHandle *)standardOutput
               standardError:(NSFileHandle *)standardError
                   reporters:(NSArray *)reporters
@@ -39,6 +40,7 @@
     _garbageCollection = garbageCollection;
     _freshSimulator = freshSimulator;
     _freshInstall = freshInstall;
+	_deviceType = deviceType;
     _standardOutput = [standardOutput retain];
     _standardError = [standardError retain];
     _reporters = [reporters retain];
@@ -50,6 +52,7 @@
 {
   [_buildSettings release];
   [_senTestList release];
+  [_deviceType release];
   [_standardOutput release];
   [_standardError release];
   [_reporters release];
