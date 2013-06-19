@@ -487,6 +487,7 @@ static NSArray *chunkifyArray(NSArray *array, NSUInteger chunkSize) {
             garbageCollection:garbageCollectionEnabled
             freshSimulator:self.freshSimulator
             freshInstall:self.freshInstall
+			deviceType:self.deviceType
             standardOutput:nil
             standardError:nil
             reporters:bufferedReporters] autorelease];
